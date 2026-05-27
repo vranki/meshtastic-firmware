@@ -2238,6 +2238,7 @@ int8_t getHopsAway(const meshtastic_MeshPacket &p, int8_t defaultIfUnknown)
 }
 
 #define NUM_ONLINE_SECS (60 * 60 * 2) // 2 hrs to consider someone offline
+#define NUM_ONLINE_SECS_SHORT (60 * 15) // 15 mins to consider someone offline
 
 size_t NodeDB::getNumOnlineMeshNodes(bool localOnly)
 {
@@ -2247,7 +2248,7 @@ size_t NodeDB::getNumOnlineMeshNodes(bool localOnly)
     for (int i = 0; i < numMeshNodes; i++) {
         if (localOnly && nodeInfoLiteViaMqtt(&meshNodes->at(i)))
             continue;
-        if (sinceLastSeen(&meshNodes->at(i)) < NUM_ONLINE_SECS)
+        if (sinceLastSeen(&meshNodes->at(i)) < NUM_ONLINE_SECS_SHORT)
             numseen++;
     }
 

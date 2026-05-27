@@ -1144,9 +1144,9 @@ void UIRenderer::drawDeviceFocused(OLEDDisplay *display, OLEDDisplayUiState *sta
 
     // Display Region and Channel Utilization
     if (currentResolution == ScreenResolution::UltraLow) {
-        drawNodes(display, x, getTextPositions(display)[line] + 2, nodeStatus, -1, false, "online");
+        drawNodes(display, x, getTextPositions(display)[line] + 2, nodeStatus, -1, false, nodeStatus->isShy() ? "Shy" : "Client");
     } else {
-        drawNodes(display, x + 1, getTextPositions(display)[line] + 2, nodeStatus, -1, false, "online");
+        drawNodes(display, x + 1, getTextPositions(display)[line] + 2, nodeStatus, -1, false, nodeStatus->isShy() ? "Shy" : "Client");
     }
     char uptimeStr[32] = "";
     if (currentResolution != ScreenResolution::UltraLow) {

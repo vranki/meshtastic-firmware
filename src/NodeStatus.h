@@ -3,6 +3,9 @@
 #include "configuration.h"
 #include <Arduino.h>
 
+// How many nodes need to be online to become shy
+#define SHY_MODE_LIMIT 3
+
 namespace meshtastic
 {
 
@@ -39,6 +42,8 @@ class NodeStatus : public Status
     uint16_t getNumTotal() const { return numTotal; }
 
     uint16_t getLastNumTotal() const { return lastNumTotal; }
+
+    bool isShy() const { return numOnline > SHY_MODE_LIMIT; }
 
     bool matches(const NodeStatus *newStatus) const
     {
