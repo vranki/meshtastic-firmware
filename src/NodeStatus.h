@@ -4,7 +4,7 @@
 #include <Arduino.h>
 
 // How many nodes need to be online to become shy
-#define SHY_MODE_LIMIT 3
+#define SHY_MODE_LIMIT 5
 
 namespace meshtastic
 {
